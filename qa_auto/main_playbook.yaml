@@ -6,7 +6,6 @@
     - name: "Restart Agent"
       become: yes
       shell: |
-          rm -f /test1  # This should be an error.
-          echo "test2"
-          echo "test1"
-          echo "test3" # success
+          pkill -9 -u jitterbit
+          jitterbit stop
+          jitterbit start
