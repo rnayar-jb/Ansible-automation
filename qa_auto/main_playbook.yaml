@@ -9,3 +9,7 @@
           pkill -9 -u jitterbit
           jitterbit stop
           jitterbit start
+      register: datecmd
+      tags: datecmd
+    - debug: msg="{{datecmd.stdout}}"
+
