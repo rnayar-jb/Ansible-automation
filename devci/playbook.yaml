@@ -18,5 +18,3 @@
     - debug: msg="{{datecmd.stdout}}"
     - debug:
         msg: "{{ inventory_hostname }} id: {{ broker_id }}"
-
-
