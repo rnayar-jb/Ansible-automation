@@ -1,0 +1,15 @@
+
+- hosts: e2e-agents
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: "Upgrade devci Agents"
+      become: yes
+      shell: |
+          "sudo -y yum install jitterbit-agent-{{ Build_VER }}.x86_64"
+          pkill -9 -u jitterbit
+          jitterbit stop
+          jitterbit start
+      register: datecmd
+      tags: datecmd
+    - debug: msg="{{datecmd.stdout}}"
