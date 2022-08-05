@@ -1,0 +1,22 @@
+---
+- hosts: tag_aws_autoscaling_groupName_DevCI
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: "Set Broker ID"
+      set_fact:
+        broker_id: "{{ ansible_play_hosts.index(inventory_hostname)| int + 1 }}"
+
+    - name: "update hostnames"
+      shell: hostname  "devci-harmony-{{ broker_id }}"
+    - name: "enroll elastic agent"
+      shell: ./elastic-agent enroll --url=https://0c50879164c94dd18b00cd22baf70f3f.fleet.us-east4.gcp.elastic-cloud.com:443 --enrollment-token=NUcxN1JIOEJSRFBRNUpxU21ZeU86bUc3WGloejdSclNWaVd3OXZPelFVZw== --force
+      register: datecmd
+      tags: datecmd
+      args:
+        chdir: "/opt/Elastic/Agent/"
+    - debug: msg="{{datecmd.stdout}}"
+    - debug:
+        msg: "{{ inventory_hostname }} id: {{ broker_id }}"
+
+
