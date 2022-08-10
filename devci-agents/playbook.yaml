@@ -1,4 +1,4 @@
-
+---
 - hosts: e2e-agents
   become: yes
   gather_facts: false
