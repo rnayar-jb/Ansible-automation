@@ -1,5 +1,5 @@
 ---
-- hosts: tag_aws_autoscaling_groupName_DevCI
+- hosts: aws_ec2
   become: yes
   gather_facts: false
   tasks:
