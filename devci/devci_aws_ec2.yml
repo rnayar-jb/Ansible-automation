@@ -28,6 +28,7 @@ filters:
   - DevCI
   tag:Department:
   - Development
+  instance-state-name : running
 
 
   #tag:flip_group: A
