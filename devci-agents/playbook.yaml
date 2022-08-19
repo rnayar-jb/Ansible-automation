@@ -1,5 +1,5 @@
 ---
-- hosts: e2e-agents
+- hosts: e2e_agents
   become: yes
   gather_facts: false
   tasks:
