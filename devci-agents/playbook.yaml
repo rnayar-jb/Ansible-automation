@@ -5,7 +5,7 @@
   tasks:
     - name: "Upgrade devci Agents"
       become: yes
-      shell: "sudo -y yum install jitterbit-agent-{{ Build_VER }}.x86_64"
+      shell: "yum -y install jitterbit-agent-{{ Build_VER }}.x86_64"
       register: datecmd
       tags: datecmd
     - name: "restart agents"
